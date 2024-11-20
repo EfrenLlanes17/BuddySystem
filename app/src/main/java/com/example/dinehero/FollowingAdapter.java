@@ -46,17 +46,17 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_list_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.saved_list_item,parent,false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-       //holder.txtSeller.setText(strings.get(position).getLocation());
+       holder.txtSeller.setText(strings.get(position).getLocation());
        holder.prodName.setText(strings.get(position).getProductName());
-       holder.prodPrice.setText(strings.get(position).getLocation()+"  ");
-       holder.prodPercent.setText(strings.get(position).getSignedUp() + "");
+       holder.prodPrice.setText(strings.get(position).getSignedUp() + " / " + strings.get(position).getMaxSignedUp() + " Attending");
+       holder.prodPercent.setText(strings.get(position).getDate());
        if(strings.get(position).getUserMadeEvent()){
            holder.pic.setImageURI(strings.get(position).getUriImage());
        }

@@ -28,15 +28,12 @@ public class ProductPage extends AppCompatActivity {
     public ImageView freeImg;
     public ImageView PPImage;
     public TextView PPPrice;
-
-    public TextView txtdaysLeft;
     private TextView PPPercentOff;
     private Button PPButton;
     private Button shareButton;
     private Button saveButton;
     private Button followingButton;
     private static User goingToUser;
-    private static Product goingToProduct;
 
 
 
@@ -60,10 +57,9 @@ public class ProductPage extends AppCompatActivity {
         int text5 = temp.getProductPercentOff();
         String text6 = temp.getProductLink();
         goingToUser =MainActivity2.findProduct(text1).getProductSeller();
-        goingToProduct =MainActivity2.findProduct(text1);
+
 
         PPProductName = findViewById(R.id.txtPPName);
-        txtdaysLeft = findViewById(R.id.txtdaysLeft);
         PPDiscription = findViewById(R.id.txtPPDiscription);
         PPImage = findViewById(R.id.txtPPImage);
         PPPrice = findViewById(R.id.txtPPPrice);
@@ -71,38 +67,33 @@ public class ProductPage extends AppCompatActivity {
         PPButton = findViewById(R.id.sitePPButton);
         saveButton = findViewById(R.id.savePPButton);
         followingButton = findViewById(R.id.followPPButton);
-        shareButton = findViewById(R.id.sharePPButton);
-
-
+        freeImg = findViewById(R.id.free);
 
         if(MainActivity2.findProduct(text1).getUserMadeEvent()){
-            PPProductName.setText("You posted this Petition");
+            PPProductName.setText("You are Hosting");
         }
         else {
             PPProductName.setText(text1);
         }
 
         PPDiscription.setText(text2);
-        PPPrice.setText(MainActivity2.findProduct(text1).getLocation() + " ");
-        PPPercentOff.setText(MainActivity2.findProduct(text1).getSignedUp() + " / 92262 Signatures");
-        txtdaysLeft.setText(MainActivity2.findProduct(text1).getDate() + " days left");
+        PPPrice.setText(MainActivity2.findProduct(text1).getLocation());
 
         if(MainActivity2.findProduct(text1).getUserMadeEvent()){
             saveButton.setVisibility(View.INVISIBLE);
             followingButton.setVisibility(View.INVISIBLE);
-            PPPercentOff.setText(MainActivity2.findProduct(text1).getSignedUp() + " / " + MainActivity2.findProduct(text1).getMaxSignedUp());
             PPButton.setVisibility(View.INVISIBLE);
         }
 
-//        if(MainActivity2.findProduct(text1).getCost() == 0){
-//            //freeImg.setVisibility(View.VISIBLE);
-//            //PPPercentOff.setVisibility(View.INVISIBLE);
-//        }
-//        else{
-//
-//            PPPercentOff.setVisibility(View.VISIBLE);
-//            PPPercentOff.setText("$" +MainActivity2.findProduct(text1).getCost() + ".00" );
-//        }
+        if(MainActivity2.findProduct(text1).getCost() == 0){
+            freeImg.setVisibility(View.VISIBLE);
+            PPPercentOff.setVisibility(View.INVISIBLE);
+        }
+        else{
+            freeImg.setVisibility(View.INVISIBLE);
+            PPPercentOff.setVisibility(View.VISIBLE);
+            PPPercentOff.setText("$" +MainActivity2.findProduct(text1).getCost() + ".00" );
+        }
 
         if(MainActivity2.findProduct(text1).getUserMadeEvent()){
             PPImage.setImageURI(MainActivity2.findProduct(text1).getUriImage());
@@ -115,32 +106,17 @@ public class ProductPage extends AppCompatActivity {
 
 
             if (ProfileActivity.inSaved(MainActivity2.findProduct(text1))) {
-                saveButton.setText(" UNSAVE ");
+                saveButton.setText("    UNSAVE   ");
             } else {
-                saveButton.setText(" SAVE ");
+                saveButton.setText("     SAVE    ");
             }
 
             if (!ProfileActivity.isFollowing(temp)) {
-                followingButton.setText(" SIGN ");
+                followingButton.setText("  ATTEND  ");
             } else {
-                followingButton.setText(" SIGNED ");
+                followingButton.setText("  ATTENDING  ");
             }
 
-            shareButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("message/rfc822");
-                    //intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"recipient@example.com"});
-                    intent.putExtra(Intent.EXTRA_SUBJECT, "Check Out This Petition on VoiceIt : " + MainActivity2.findProduct(text1).getProductName());
-                    intent.putExtra(Intent.EXTRA_TEXT, "" + MainActivity2.findProduct(text1).getProductDiscription());
-
-                    // Check if there is an app that can handle this intent
-                    if (intent.resolveActivity(getPackageManager()) != null) {
-                        startActivity(Intent.createChooser(intent, "Choose an email client"));
-                    }
-                }
-            });
 
 
 
@@ -152,18 +128,17 @@ public class ProductPage extends AppCompatActivity {
                     if (!ProfileActivity.isFollowing(temp)) {
                         ProfileActivity.addToFollowing(temp);
                         MainActivity2.findProduct(text1).changeSignedUpBy(1);
-                        followingButton.setText(" SIGNED ");
+                        followingButton.setText("  ATTENDING  ");
                     }
                     else{
                         ProfileActivity.removeFromFollowing(temp);
                         MainActivity2.findProduct(text1).changeSignedUpBy(-1);
-                        followingButton.setText(" SIGN ");
+                        followingButton.setText("  ATTEND  ");
                     }
 
                 }
                 else{
-                    openProfile();
-                    Toast.makeText(ProductPage.this, "Sign in to sign petitions", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProductPage.this, "Sign in to attend events", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -177,20 +152,19 @@ public class ProductPage extends AppCompatActivity {
                     if (temp.getHasbeenSaved()) {
 
                         ProfileActivity.removeFromSaved(temp);
-                        saveButton.setText(" SAVE ");
+                        saveButton.setText("     SAVE    ");
                         temp.setHasbeenSaved(false);
-                        Toast.makeText(ProductPage.this, "Petition unsaved, reload tab", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProductPage.this, "Event unsaved, reload tab", Toast.LENGTH_SHORT).show();
 
                     } else {
                         ProfileActivity.addToSaved(temp);
-                        saveButton.setText(" UNSAVE ");
+                        saveButton.setText("    UNSAVE   ");
                        temp.setHasbeenSaved(true);
 
                     }
                 }
                 else{
-                    openProfile();
-                    Toast.makeText(ProductPage.this, "Sign in to save petitions", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProductPage.this, "Sign in to save events", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -216,17 +190,9 @@ public void openUserPage(){
     Intent intent = new Intent(this, UserPage.class);
     this.startActivity(intent);
 }
-    public void openProfile(){
-        Intent intent = new Intent(this, ProfileActivity.class);
-        this.startActivity(intent);
-    }
 public static User goToUserProfile(){
         return  goingToUser;
 }
-
-public static Product goToUserProfileProduct(){
-        return  goingToProduct;
-    }
 
 
 

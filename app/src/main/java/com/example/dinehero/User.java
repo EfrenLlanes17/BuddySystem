@@ -297,8 +297,6 @@ public class User {
     }
 
 
-
-
     public static User findUser2(String username, String password){
        for(int x = 0; x < userArrayList.size();x++) {
             if(userArrayList.get(x).getUsername().equals(username) && userArrayList.get(x).getPassword().equals(password)){

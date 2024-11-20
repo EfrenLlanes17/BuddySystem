@@ -63,27 +63,14 @@ public class SearchActivity extends AppCompatActivity {
 
           }
 
-
-
-
-
-
-
-
-
-
-
           @Override
           public void afterTextChanged(Editable editable) {
-
               noResults.setVisibility(View.INVISIBLE);
               searchArrayList.clear();
               adapter.setProducts(searchArrayList);
               for (int x = 0; x < MainActivity2.getProductsList().size(); x++) {
                   if (ProfileActivity.isNotInsideSearch(MainActivity2.getProductsList().get(x).getProductName())) {
-                      if (MainActivity2.getProductsList().get(x).getProductName().toLowerCase().indexOf(search.getText().toString().toLowerCase()) > -1
-                              || MainActivity2.getProductsList().get(x).getDate().indexOf(search.getText().toString().toLowerCase()) > -1
-                              || MainActivity2.getProductsList().get(x).getLocation().toLowerCase().indexOf(search.getText().toString().toLowerCase()) > -1) {
+                      if (MainActivity2.getProductsList().get(x).getProductName().toLowerCase().indexOf(search.getText().toString().toLowerCase()) > -1 || MainActivity2.getProductsList().get(x).getDate().indexOf(search.getText().toString().toLowerCase()) > -1 || MainActivity2.getProductsList().get(x).getLocation().toLowerCase().indexOf(search.getText().toString().toLowerCase()) > -1) {
                           searchArrayList.add(0, MainActivity2.getProductsList().get(x));
                           adapter.setProducts(searchArrayList);
 
@@ -96,15 +83,6 @@ public class SearchActivity extends AppCompatActivity {
               }
           }
       });
-
-
-
-
-
-
-
-
-
 
 
 

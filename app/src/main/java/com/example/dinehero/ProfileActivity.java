@@ -11,14 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -39,7 +37,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -90,13 +87,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView welcome;
     private static boolean happened = false;
 
-    private ImageView logoSign;
-
-    private static boolean signedQ = false;
-    private SignatureView signatureView;
-
-    private CheckBox regBox;
-
+    private ImageButton settingBtn;
 
 
     private static RelativeLayout relativeLayout;
@@ -111,34 +102,9 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        signatureView = findViewById(R.id.signature_view);
-        regBox = findViewById(R.id.regBox);
-        Button clearButton = findViewById(R.id.clear_button);
-        Button saveButton = findViewById(R.id.save_button);
-
-        clearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signatureView.clearSignature();
-            }
-        });
-
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bitmap signatureBitmap = signatureView.getSignatureBitmap();
-                saveSignature(signatureBitmap);
-            }
-        });
-
-
-
-
-
-
         helloUserName = findViewById(R.id.HelloUserName);
 
-        logoSign = findViewById(R.id.logoSign);
+        settingBtn = findViewById(R.id.settingsButton);
         relativeLayout = findViewById(R.id.profileRelativelayout);
         FollowingRV = findViewById(R.id.FollowingRV);
         SavedRV = findViewById(R.id.SavedRV);
@@ -181,19 +147,15 @@ public class ProfileActivity extends AppCompatActivity {
         Saved.setVisibility(View.INVISIBLE);
         SavedRV.setVisibility(View.INVISIBLE);
         FollowingRV.setVisibility(View.INVISIBLE);
-        logoSign.setVisibility(View.INVISIBLE);
+        settingBtn.setVisibility(View.INVISIBLE);
         helloUserName.setVisibility(View.INVISIBLE);
 
 
         if(User.isHasSignedIn()){
 
 
-            relativeLayout.setBackground(getResources().getDrawable(R.drawable.voiceitprofilebackground2));
+            relativeLayout.setBackground(getResources().getDrawable(R.drawable.background3));
             welcome.setVisibility(View.INVISIBLE);
-            regBox.setVisibility(View.INVISIBLE);
-            signatureView.setVisibility(View.INVISIBLE);
-            clearButton.setVisibility(View.INVISIBLE);
-
             usernameNotFoundError.setVisibility(View.INVISIBLE);
             signInHeader.setVisibility(View.INVISIBLE);
             usernameTakenError.setVisibility(View.INVISIBLE);
@@ -215,30 +177,28 @@ public class ProfileActivity extends AppCompatActivity {
             helloUserName.setText(ProfileActivity.getCurrentUserUsername());
             line.setVisibility(View.VISIBLE);
             HelloFollowing.setVisibility(View.VISIBLE);
-            line2.setVisibility(View.INVISIBLE);
+            line2.setVisibility(View.VISIBLE);
             Saved.setVisibility(View.VISIBLE);
             SavedRV.setVisibility(View.VISIBLE);
             FollowingRV.setVisibility(View.VISIBLE);
-            logoSign.setVisibility(View.VISIBLE);
+            settingBtn.setVisibility(View.VISIBLE);
         }
 
-//        settingBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//             openSettingsActivity();
-//            }
-//        });
+        settingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+             openSettingsActivity();
+            }
+        });
 
         signInProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-//                User.setHasSignedIn(true);
-//                setCurrentUserPassword(edtTxtPassword.getText().toString());
-//                setCurrentUserUsername(edtTxtUsername.getText().toString());
-//                Toast.makeText(ProfileActivity.this, "Signed in successfully, reload tab", Toast.LENGTH_LONG).show();
-                Toast.makeText(ProfileActivity.this, "Account Not Found, Create An Account to Sign in", Toast.LENGTH_SHORT).show();
-
+                User.setHasSignedIn(true);
+                setCurrentUserPassword(edtTxtPassword.getText().toString());
+                setCurrentUserUsername(edtTxtUsername.getText().toString());
+                Toast.makeText(ProfileActivity.this, "Signed in successfully, reload tab", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -247,36 +207,25 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 usernameNotFoundError.setVisibility(View.INVISIBLE);
-                if(edtTxtPassword.getText().toString().length() >= 1) {
-                    if(true || edtTxtPassword.getText().toString().indexOf("A") > -1 || edtTxtPassword.getText().toString().indexOf("B") > -1 || edtTxtPassword.getText().toString().indexOf("C") > -1|| edtTxtPassword.getText().toString().indexOf("D") > -1|| edtTxtPassword.getText().toString().indexOf("E") > -1|| edtTxtPassword.getText().toString().indexOf("F") > -1|| edtTxtPassword.getText().toString().indexOf("G") > -1|| edtTxtPassword.getText().toString().indexOf("H") > -1|| edtTxtPassword.getText().toString().indexOf("I") > -1|| edtTxtPassword.getText().toString().indexOf("J") > -1|| edtTxtPassword.getText().toString().indexOf("K") > -1|| edtTxtPassword.getText().toString().indexOf("L") > -1|| edtTxtPassword.getText().toString().indexOf("M") > -1|| edtTxtPassword.getText().toString().indexOf("N") > -1|| edtTxtPassword.getText().toString().indexOf("O") > -1|| edtTxtPassword.getText().toString().indexOf("P") > -1|| edtTxtPassword.getText().toString().indexOf("Q") > -1|| edtTxtPassword.getText().toString().indexOf("R") > -1|| edtTxtPassword.getText().toString().indexOf("S") > -1|| edtTxtPassword.getText().toString().indexOf("T") > -1|| edtTxtPassword.getText().toString().indexOf("U") > -1|| edtTxtPassword.getText().toString().indexOf("V") > -1|| edtTxtPassword.getText().toString().indexOf("W") > -1|| edtTxtPassword.getText().toString().indexOf("X") > -1|| edtTxtPassword.getText().toString().indexOf("Y") > -1|| edtTxtPassword.getText().toString().indexOf("Z") > -1) {
-                        if(true || edtTxtPassword.getText().toString().indexOf("1") >-1|| edtTxtPassword.getText().toString().indexOf("2") >-1|| edtTxtPassword.getText().toString().indexOf("3") >-1|| edtTxtPassword.getText().toString().indexOf("4") >-1|| edtTxtPassword.getText().toString().indexOf("5") >-1|| edtTxtPassword.getText().toString().indexOf("6") >-1|| edtTxtPassword.getText().toString().indexOf("7") >-1|| edtTxtPassword.getText().toString().indexOf("8") >-1|| edtTxtPassword.getText().toString().indexOf("9") >-1|| edtTxtPassword.getText().toString().indexOf("0") >-1){
-                            if(true) {
+                if(edtTxtPassword.getText().toString().length() >= 10) {
+                    if(edtTxtPassword.getText().toString().indexOf("A") > -1 || edtTxtPassword.getText().toString().indexOf("B") > -1 || edtTxtPassword.getText().toString().indexOf("C") > -1|| edtTxtPassword.getText().toString().indexOf("D") > -1|| edtTxtPassword.getText().toString().indexOf("E") > -1|| edtTxtPassword.getText().toString().indexOf("F") > -1|| edtTxtPassword.getText().toString().indexOf("G") > -1|| edtTxtPassword.getText().toString().indexOf("H") > -1|| edtTxtPassword.getText().toString().indexOf("I") > -1|| edtTxtPassword.getText().toString().indexOf("J") > -1|| edtTxtPassword.getText().toString().indexOf("K") > -1|| edtTxtPassword.getText().toString().indexOf("L") > -1|| edtTxtPassword.getText().toString().indexOf("M") > -1|| edtTxtPassword.getText().toString().indexOf("N") > -1|| edtTxtPassword.getText().toString().indexOf("O") > -1|| edtTxtPassword.getText().toString().indexOf("P") > -1|| edtTxtPassword.getText().toString().indexOf("Q") > -1|| edtTxtPassword.getText().toString().indexOf("R") > -1|| edtTxtPassword.getText().toString().indexOf("S") > -1|| edtTxtPassword.getText().toString().indexOf("T") > -1|| edtTxtPassword.getText().toString().indexOf("U") > -1|| edtTxtPassword.getText().toString().indexOf("V") > -1|| edtTxtPassword.getText().toString().indexOf("W") > -1|| edtTxtPassword.getText().toString().indexOf("X") > -1|| edtTxtPassword.getText().toString().indexOf("Y") > -1|| edtTxtPassword.getText().toString().indexOf("Z") > -1) {
+                        if(edtTxtPassword.getText().toString().indexOf("1") >-1|| edtTxtPassword.getText().toString().indexOf("2") >-1|| edtTxtPassword.getText().toString().indexOf("3") >-1|| edtTxtPassword.getText().toString().indexOf("4") >-1|| edtTxtPassword.getText().toString().indexOf("5") >-1|| edtTxtPassword.getText().toString().indexOf("6") >-1|| edtTxtPassword.getText().toString().indexOf("7") >-1|| edtTxtPassword.getText().toString().indexOf("8") >-1|| edtTxtPassword.getText().toString().indexOf("9") >-1|| edtTxtPassword.getText().toString().indexOf("0") >-1){
+                            if(edtTxtPassword.getText().toString().indexOf(" ") == -1) {
                                 if(User.usernameNotTaken(edtTxtUsername.getText().toString())) {
-                                    if(true) {
-                                        if(true) {
-                                            if(signedQ) {
-                                                if(regBox.isChecked()) {
-                                                    ProfileActivity.setUsername(edtTxtUsername.getText().toString());
+                                    if(edtTxtUsername.getText().toString().indexOf(" ") == -1) {
+                                        if(edtTxtUsername.getText().toString().length() < 12) {
+                                            ProfileActivity.setUsername(edtTxtUsername.getText().toString());
 
-                                                    User newUser = new User(edtTxtUsername.getText().toString(), edtTxtPassword.getText().toString(), 5, 5, 5.0, "", 5);
+                                            User newUser = new User(edtTxtUsername.getText().toString(), edtTxtPassword.getText().toString(),5,5,5.0,"",5);
 
-                                                    User.setHasSignedIn(true);
+                                            User.setHasSignedIn(true);
 
-                                                    setCurrentUserPassword(edtTxtPassword.getText().toString());
-                                                    setCurrentUserUsername(edtTxtUsername.getText().toString());
-                                                    User.setHasSignedIn(true);
+                                            setCurrentUserPassword(edtTxtPassword.getText().toString());
+                                            setCurrentUserUsername(edtTxtUsername.getText().toString());
+                                            User.setHasSignedIn(true);
 
-                                                    Toast.makeText(ProfileActivity.this, "Account created successfully, reload tab ", Toast.LENGTH_LONG).show();
-                                                }
-                                                else{
-                                                    Toast.makeText(ProfileActivity.this, "Must be a Registered Voter", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(ProfileActivity.this, "Account created successfully, reload tab " , Toast.LENGTH_LONG).show();
 
-                                                }
-                                                }
-                                            else{
-                                                Toast.makeText(ProfileActivity.this, "Signature is required", Toast.LENGTH_LONG).show();
-
-                                            }
                                         }
                                         else{
                                             passwordShortError.setVisibility(View.INVISIBLE);
@@ -374,7 +323,7 @@ public class ProfileActivity extends AppCompatActivity {
 //                savedList =  temp2;
 //            }
 //        }
-        ProductSearchAdapter adapter = new ProductSearchAdapter(this);
+        SavedAdapter adapter = new SavedAdapter(this);
         adapter.setProducts(savedList);
         SavedRV.setAdapter(adapter);
         SavedRV.setLayoutManager(new GridLayoutManager(this,1,LinearLayoutManager.HORIZONTAL,false));
@@ -414,19 +363,6 @@ public class ProfileActivity extends AppCompatActivity {
             return true;
         }
         return false;
-    }
-
-    public static void isSignedQ(boolean thisis){
-        signedQ = thisis;
-    }
-
-    private void saveSignature(Bitmap bitmap) {
-        File file = new File(getExternalFilesDir(null), "signature.png");
-        try (FileOutputStream fos = new FileOutputStream(file)) {
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     public static void addToFollowing(Product product){
         FollowingList.add(product);

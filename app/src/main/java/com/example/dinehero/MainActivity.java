@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -29,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     ProgressBar ProB;
-    Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         ProB = findViewById(R.id.progressBar);
-        backButton = findViewById(R.id.backbutton);
 
         ProB.bringToFront();
         Handler handler = new Handler();
@@ -48,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
                 startActivity(intent);
             }
-        }, 2000);
+        }, 3000);
 
         ProB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,12 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openMainActivity();
-            }
-        });
+
 
     }
     public void openMainActivity(){

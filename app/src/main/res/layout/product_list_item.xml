@@ -20,39 +20,22 @@ android:backgroundTint="#FFFFFF"
 
         <ImageView
             android:id="@+id/txtImage"
-            android:layout_width="275dp"
-            android:layout_height="285dp"
-            android:layout_alignParentLeft="true"
-            android:src="@mipmap/buddylogoooo"
-            android:scaleType="centerCrop"
-
-               />
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/ic_launcher_round"
+           />
 
         <TextView
             android:id="@+id/txtName"
-            android:layout_toRightOf="@id/txtImage"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:textStyle="bold"
 
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/txtImage"
             android:fontFamily="@font/notoserifvithkuqivariablefontwght"
             android:text="Product Name"
             android:textColor="@color/black"
-            android:textSize="25dp"/>
-
-        <TextView
-            android:id="@+id/txtDisc"
-            android:layout_toRightOf="@id/txtImage"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/txtName"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notoserifvithkuqivariablefontwght"
-            android:text="blah blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah"
-            android:textColor="@color/black"
-            android:textSize="23dp"/>
+            android:textSize="32dp"/>
 
 
 
@@ -60,11 +43,8 @@ android:backgroundTint="#FFFFFF"
             android:id="@+id/txtPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/txtImage"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="25dp"
-            android:textStyle="bold"
-            android:layout_below="@+id/txtImage"
+            android:layout_below="@+id/txtName"
             android:text="Product Price"
             android:fontFamily="@font/notoserifvithkuqivariablefontwght"
             android:textColor="@color/black"
@@ -75,13 +55,13 @@ android:backgroundTint="#FFFFFF"
             android:id="@+id/txtSeller"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/txtPrice"
             android:text="Product Seller"
-            android:layout_below="@+id/txtImage"
-
-            android:textSize="22dp"
+            android:textSize="18dp"
             android:layout_marginTop="5dp"
             android:textStyle="italic"
-            android:textColor="#5E5B5B"
+            android:textColor="#FE8D9E"
+            android:textColorHint="#FFFEC86C"
             android:fontFamily="@font/notoserifvithkuqivariablefontwght"            />
 
 
@@ -89,26 +69,15 @@ android:backgroundTint="#FFFFFF"
             android:id="@+id/txtPercentOff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/txtPrice"
             android:layout_marginTop="5dp"
-            android:layout_below="@+id/txtImage"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="60dp"
+            android:layout_marginRight="15dp"
             android:fontFamily="@font/notoserifvithkuqivariablefontwght"
             android:text="70"
             android:textColor="#000000"
-            android:textSize="25dp"
+            android:textSize="15dp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/txtPersonImage"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="285dp"
-            android:layout_toLeftOf="@id/txtPercentOff"
-            android:layout_marginRight="15dp"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/baseline_people_24"
-            />
 
 
 

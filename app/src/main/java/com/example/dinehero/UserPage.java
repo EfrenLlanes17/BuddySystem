@@ -92,10 +92,10 @@ public class UserPage extends AppCompatActivity {
 
 
 
-        PPProductName.setText(ProductPage.goToUserProfile().getUsername());
+        PPProductName.setText(ProductPage.goToUserProfile().getUsername() + " Age: " + ProductPage.goToUserProfile().getAge());
         PPDiscription.setText(ProductPage.goToUserProfile().getBio());
         PPPercentOff.setText("" +ProductPage.goToUserProfile().getRating() + "/5.0");
-        PPPrice.setText("Posted " +ProductPage.goToUserProfile().getEventsAttended() + " Petitions");
+        PPPrice.setText("Attended " +ProductPage.goToUserProfile().getEventsAttended() + " Events");
         PPImage.setImageDrawable(ContextCompat.getDrawable(this,ProductPage.goToUserProfile().getDraw()));
 //        PPPrice.setText(MainActivity2.findProduct(text1).getLocation());
 //        if(MainActivity2.findProduct(text1).getCost() == 0){
@@ -133,24 +133,18 @@ public class UserPage extends AppCompatActivity {
                 saveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-
                         if (!ProfileActivity.getCurrentUserUsername().equals("")) {
 
                                 openSearchActivity();
                                 invitingText = ProductPage.goToUserProfile().getUsername();
                                 inviting = true;
-                                Toast.makeText(UserPage.this, "Select Petition To Share " + ProductPage.goToUserProfile().getUsername(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(UserPage.this, "Select Event To Invite " + ProductPage.goToUserProfile().getUsername(), Toast.LENGTH_LONG).show();
 
 
                         } else {
-                            openProfile();
-                            Toast.makeText(UserPage.this, "Sign in to share with Users", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserPage.this, "Sign in to Invite Users", Toast.LENGTH_SHORT).show();
 
                         }
-
-
-
                     }
                 });
 
@@ -210,11 +204,6 @@ public class UserPage extends AppCompatActivity {
     public static void setInviting(boolean inviting2, String invitingText2){
         inviting = inviting2;
         invitingText = invitingText2;
-    }
-
-    public void openProfile(){
-        Intent intent = new Intent(this, ProfileActivity.class);
-        this.startActivity(intent);
     }
     public static boolean getInviting(){
         return inviting;

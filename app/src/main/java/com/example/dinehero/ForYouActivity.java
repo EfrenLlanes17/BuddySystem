@@ -92,7 +92,7 @@ public class ForYouActivity extends AppCompatActivity {
             ImageTings.setVisibility(View.VISIBLE);
             eventDisc.setVisibility(View.VISIBLE);
             creatBtn.setVisibility(View.VISIBLE);
-            //eventPrice.setVisibility(View.VISIBLE);
+            eventPrice.setVisibility(View.VISIBLE);
             eventLoc.setVisibility(View.VISIBLE);
             eventName.setVisibility(View.VISIBLE);
             eventAttending.setVisibility(View.VISIBLE);
@@ -112,24 +112,19 @@ public class ForYouActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(!eventName.getText().toString().equals("") && !eventDisc.getText().toString().equals("") && !eventLoc.getText().toString().equals("") && !eventAttending.getText().toString().equals("") && !eventDate.getText().toString().equals("") && uriiiii != null) {
-                    ProfileActivity.addToFollowing(new Product(eventName.getText().toString(), eventDisc.getText().toString(), eventLoc.getText().toString(), null, uriiiii, false, eventAttending.getText().toString(), 1, Integer.parseInt(eventDate.getText().toString()), 0));
-                    MainActivity2.addToProdList(new Product(eventName.getText().toString(), eventDisc.getText().toString(), eventLoc.getText().toString(), null, uriiiii, false, eventAttending.getText().toString(), 1, Integer.parseInt(eventDate.getText().toString()), 0));
 
-                    eventName.setText("");
-                    eventDisc.setText("");
-                    eventLoc.setText("");
-                    eventPrice.setText("");
-                    eventAttending.setText("");
-                    eventDate.setText("");
-                    ImageTings.setImageDrawable(ContextCompat.getDrawable(ForYouActivity.this, R.drawable.baseline_image_search_24222222222));
-                    //ImageTings.setBackground(ContextCompat.getDrawable(ForYouActivity.this,R.drawable.baseline_image_search_24));
-                    Toast.makeText(ForYouActivity.this, "Petition Created Successfully", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(ForYouActivity.this, "Not All Requirements Satisfied", Toast.LENGTH_LONG).show();
+                ProfileActivity.addToFollowing(new Product(eventName.getText().toString(),eventDisc.getText().toString(),eventLoc.getText().toString(),null,uriiiii,false,eventDate.getText().toString(),1,Integer.parseInt(eventAttending.getText().toString()), Integer.parseInt(eventPrice.getText().toString())));
+                MainActivity2.addToProdList(new Product(eventName.getText().toString(),eventDisc.getText().toString(),eventLoc.getText().toString(),null,uriiiii,false,eventDate.getText().toString(),1,Integer.parseInt(eventAttending.getText().toString()), Integer.parseInt(eventPrice.getText().toString())));
 
-                }
+                eventName.setText("");
+                eventDisc.setText("");
+                eventLoc.setText("");
+                eventPrice.setText("");
+                eventAttending.setText("");
+                eventDate.setText("");
+                ImageTings.setImageDrawable(ContextCompat.getDrawable(ForYouActivity.this,R.drawable.baseline_image_search_24222222222));
+                //ImageTings.setBackground(ContextCompat.getDrawable(ForYouActivity.this,R.drawable.baseline_image_search_24));
+                Toast.makeText(ForYouActivity.this, "Event Created Successfully", Toast.LENGTH_SHORT).show();
             }
         });
 

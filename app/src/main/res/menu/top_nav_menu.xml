@@ -7,7 +7,7 @@
         android:id="@+id/btnDiscover"
         android:checkable="false"
         android:enabled="true"
-        android:title="PETITIONS"
+        android:title="EVENTS"
         android:visible="true"
         app:showAsAction="always"
 

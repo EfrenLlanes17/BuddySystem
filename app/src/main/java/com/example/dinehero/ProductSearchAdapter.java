@@ -51,14 +51,10 @@ public class ProductSearchAdapter extends RecyclerView.Adapter<ProductSearchAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
        holder.txtName.setText(products.get(position).getProductName());
-       holder.txtPrice.setText(products.get(position).getLocation() + " ");
-       holder.txtPercentOff.setText(products.get(position).getSignedUp() + "");
-        if(products.get(position).getUserMadeEvent()){
-            holder.image.setImageURI(products.get(position).getUriImage());
-        }
-        else {
-            holder.image.setImageDrawable(ContextCompat.getDrawable(context, products.get(position).getProductImage()));
-        }
+       holder.txtPrice.setText(products.get(position).getLocation());
+       holder.txtPercentOff.setText(products.get(position).getDate());
+       holder.image.setImageDrawable(ContextCompat.getDrawable(context,products.get(position).getProductImage()));
+
         holder.parent.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
@@ -75,7 +71,7 @@ public class ProductSearchAdapter extends RecyclerView.Adapter<ProductSearchAdap
 
 
                if(UserPage.getInviting()){
-                   Toast.makeText(context.getApplicationContext(), "Shared " + UserPage.getInvitingText() + " with " +  products.get(position).getProductName() , Toast.LENGTH_LONG).show();
+                   Toast.makeText(context.getApplicationContext(), "Invited " + UserPage.getInvitingText() + " to " +  products.get(position).getProductName() , Toast.LENGTH_LONG).show();
                    UserPage.setInviting(false,"");
 
                }

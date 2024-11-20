@@ -10,60 +10,43 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Petition"
+        android:text="Create Event"
         android:id="@+id/createPostText"
-        android:textColor="#000000"
+        android:textColor="#FE8D9E"
         android:textSize="50dp"
 
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/notoserifvithkuqivariablefontwght"
         android:textStyle="bold"
-        android:layout_marginTop="70dp"/>
+        android:layout_marginTop="60dp"/>
 
-
-
-
-
-
-
-    <!-- Petition Title -->
     <EditText
         android:layout_width="550dp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
         android:hint="Title"
-        android:textColorHint="#000000"
+        android:textColorHint="#FD8C9D"
         android:textStyle="bold"
-        android:imeOptions="actionNext"
-        android:inputType="text"
-        android:textColor="#000000"
+        android:imeOptions="actionDone"
+        android:textColor="#FD8C9D"
         android:fontFamily="@font/notoserifvithkuqivariablefontwght"
         android:textSize="35dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="125dp"
         android:id="@+id/edtTextTitle"
 
         ></EditText>
-
-
-
-
-
-
-
-
-
 
     <EditText
         android:layout_width="550dp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:hint="Signatures Needed"
-        android:textColorHint="#000000"
-        android:textColor="#000000"
+        android:hint="Date"
+        android:textColorHint="#FD8C9D"
+        android:textColor="#FD8C9D"
         android:textStyle="bold"
-        android:inputType="number"
+        android:inputType="date"
         android:textSize="25dp"
-        android:layout_marginTop="390dp"
+        android:layout_marginTop="425dp"
         android:fontFamily="@font/notoserifvithkuqivariablefontwght"
         android:id="@+id/edtTextDate"
 
@@ -74,14 +57,13 @@
         android:layout_width="550dp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:hint="Theme"
-        android:textColorHint="#000000"
-        android:imeOptions="actionNext"
-        android:textColor="#000000"
-        android:inputType="text"
+        android:hint="Location"
+        android:textColorHint="#FD8C9D"
+        android:imeOptions="actionDone"
+        android:textColor="#FD8C9D"
         android:textStyle="bold"
         android:textSize="25dp"
-        android:layout_marginTop="495dp"
+        android:layout_marginTop="525dp"
         android:fontFamily="@font/notoserifvithkuqivariablefontwght"
         android:id="@+id/edtTextLoc"
 
@@ -91,16 +73,15 @@
         android:layout_width="550dp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:hint=" Price"
+        android:hint="Price"
         android:layout_marginTop="225dp"
-        android:textColor="#000000"
+        android:textColor="#FD8C9D"
         android:inputType="number"
-        android:visibility="invisible"
         android:textStyle="bold"
         android:textSize="25dp"
         android:id="@+id/edtTextPrice"
         android:fontFamily="@font/notoserifvithkuqivariablefontwght"
-        android:textColorHint="#000000"
+        android:textColorHint="#FD8C9D"
 
 
         ></EditText>
@@ -109,15 +90,15 @@
         android:layout_width="550dp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:hint="Duration"
-        android:textColorHint="#000000"
+        android:hint="Attending"
+        android:textColorHint="#FD8C9D"
         android:textStyle="bold"
         android:imeOptions="actionNext"
-        android:textColor="#000000"
+        android:textColor="#FD8C9D"
         android:inputType="number"
         android:fontFamily="@font/notoserifvithkuqivariablefontwght"
         android:textSize="25dp"
-        android:layout_marginTop="285dp"
+        android:layout_marginTop="325dp"
         android:id="@+id/edtTextAttending"
 
         ></EditText>
@@ -127,15 +108,14 @@
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
         android:hint="Description"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
+        android:textColor="#FD8C9D"
+        android:textColorHint="#FD8C9D"
         android:imeOptions="actionDone"
         android:textSize="25dp"
-        android:inputType="text"
         android:textStyle="bold"
         android:fontFamily="@font/notoserifvithkuqivariablefontwght"
 
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="625dp"
         android:id="@+id/edtTextDisc"
 
         ></EditText>
@@ -146,12 +126,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:backgroundTint="#000000"
+        android:backgroundTint="#FE8D9E"
         android:fontFamily="@font/notoserifvithkuqivariablefontwght"
         android:text="Go to Sign In"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
     <Button
         android:id="@+id/createPostBtn"
         android:layout_width="wrap_content"
@@ -159,7 +138,7 @@
        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
-        android:backgroundTint="#000000"
+        android:backgroundTint="#FE8D9E"
         android:fontFamily="@font/notoserifvithkuqivariablefontwght"
         android:textSize="35dp"
         android:text="CREATE"
@@ -183,7 +162,7 @@ android:background="@drawable/baseline_image_search_24"
         android:layout_height="45dp"
         app:menu="@menu/top_nav_menu"
         app:labelVisibilityMode="labeled"
-        android:background="@drawable/gradient3"
+        android:background="@drawable/gradient1"
         app:itemTextColor="#FFFFFF"
         app:itemIconTint="#FFFFFF"
         app:itemTextAppearanceActive="@color/black"

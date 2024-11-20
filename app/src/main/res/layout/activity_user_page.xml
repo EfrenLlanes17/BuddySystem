@@ -8,13 +8,11 @@
     android:background="#FFFFFF">
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/txtPPImage"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:scaleType="centerCrop"
-                android:layout_marginTop="100dp"
-                android:layout_marginLeft="80dp"
+                android:layout_width="400dp"
+                android:layout_height="300dp"
+                android:layout_centerHorizontal="true"
                 android:src="@mipmap/ic_launcher_round"
                 />
 
@@ -22,16 +20,16 @@
             <TextView
                 android:id="@+id/txtPPName"
 
-                android:layout_width="300dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="400dp"
+                android:layout_marginTop="325dp"
                 android:fontFamily="@font/notoserifvithkuqivariablefontwght"
 
                 android:text="Product Name"
                 android:textColor="#000000"
-                android:textAlignment="center"
-                android:textSize="40dp"
-                android:layout_marginLeft="60dp"/>
+
+                android:textSize="32dp"
+                android:layout_marginLeft="20dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +37,6 @@
         android:text="__________________________________________"
         android:textSize="40dp"
         android:layout_marginTop="340dp"
-        android:visibility="invisible"
         android:layout_centerHorizontal="true"
         android:textColor="#FE8D9E"
         />
@@ -49,23 +46,22 @@
         android:layout_marginTop="11dp"
         android:layout_marginRight="125dp"
         android:id="@+id/free"
-        android:visibility="invisible"
         android:src="@drawable/star"
         android:layout_alignParentRight="true"
         />
 
     <TextView
         android:id="@+id/txtPPDiscription"
+        android:layout_marginTop="20dp"
         android:textColor="#000000"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
+        android:layout_below="@+id/lineeee"
+
         android:fontFamily="@font/notoserifvithkuqivariablefontwght"
         android:text="Product Discription"
         android:textSize="27dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginLeft="20dp"/>
 
     <Button
         android:id="@+id/sitePPButton"
@@ -73,9 +69,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
-        android:visibility="invisible"
         android:layout_toLeftOf="@id/followPPButton"
-        android:backgroundTint="#000000"
+        android:backgroundTint="#FF8E9F"
         android:text="RATE"
         android:textSize="20dp"
         android:textColor="#FFFFFF" />
@@ -86,7 +81,6 @@
         android:text="MESSAGE"
         android:layout_marginTop="10dp"
         android:textColor="#FFFFFF"
-        android:visibility="invisible"
         android:layout_marginLeft="10dp"
         android:textSize="20dp"
         android:layout_marginBottom="20dp"
@@ -98,12 +92,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/savePPButton"
-        android:text="Share Petitions"
-        android:backgroundTint="#000000"
-        android:layout_marginTop="700dp"
+        android:text="INVITE"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#FF8E9F"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         android:textColor="#FFFFFF"
-        android:textSize="25dp"
-        android:layout_marginLeft="95dp"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/followPPButton"
         />
 
 
@@ -114,16 +111,16 @@
                 android:id="@+id/txtPPPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="525dp"
+                android:layout_marginTop="325dp"
 
-                android:textAlignment="center"
-                android:layout_marginLeft="105dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
                 android:textColor="#000000"
                 android:fontFamily="@font/notoserifvithkuqivariablefontwght"
 
                 android:text="Product Price"
 
-                android:textSize="24dp"/>
+                android:textSize="30dp"/>
 
 
     <TextView
@@ -137,7 +134,7 @@
         android:textColor="#000000"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
-        android:visibility="invisible"
+
 
         android:fontFamily="@font/notoserifvithkuqivariablefontwght"
         android:text="4.2/5.0"
@@ -148,10 +145,9 @@
         android:id="@+id/ImageBox"
         android:layout_width="450dp"
         android:layout_height="350dp"
-        android:layout_centerInParent="true"
 
-        android:background="#FD8C9D"
-        android:visibility="invisible" />
+        android:layout_centerInParent="true"
+        android:background="#FD8C9D" />
 
     <ImageView
         android:id="@+id/ImageBoxInBox"
@@ -163,13 +159,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rate User"
-
         android:layout_centerHorizontal="true"
         android:layout_marginTop="340dp"
         android:fontFamily="@font/notoserifvithkuqivariablefontwght"
         android:textSize="45dp"
         android:textStyle="bold"
-        android:visibility="invisible"
         android:textColor="#FD8C9D"
         android:id="@+id/rateTitleText"
         ></TextView>
@@ -183,8 +177,6 @@
         android:textSize="45dp"
         android:textStyle="bold"
         android:imeOptions="actionDone"
-        android:visibility="invisible"
-
         android:id="@+id/ratingEditTxt"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/rateTitleText"
@@ -204,7 +196,6 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="340dp"
-        android:visibility="invisible"
 
         android:layout_marginRight="180dp"
         android:id="@+id/star2"
